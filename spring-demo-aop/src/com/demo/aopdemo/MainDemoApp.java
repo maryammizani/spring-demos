@@ -23,7 +23,7 @@ public class MainDemoApp {
 		MembershipDAO lMembershipDAO = lContext.getBean("membershipDAO", MembershipDAO.class);
 						
 		// Call the business method
-		lMembershipDAO.addAccount();
+		lMembershipDAO.addMember();
 		
 		// Close the context
 		lContext.close();
