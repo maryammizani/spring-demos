@@ -10,4 +10,9 @@ public class AccountDAO {
 	public void addAccount(Account iAccount, boolean iFlag) {
 		System.out.println(getClass() + ": Doing my DB work: Adding an account");
 	}
+	
+	public boolean doWork() {
+		System.out.println(getClass() + ": Doing work");
+		return false;
+	}
 }

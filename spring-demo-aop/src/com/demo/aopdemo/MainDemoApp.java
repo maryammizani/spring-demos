@@ -19,12 +19,14 @@ public class MainDemoApp {
 		// Call the business method
 		Account lAccount = new Account();
 		lAccountDAO.addAccount(lAccount, true);
+		lAccountDAO.doWork();
 		
 		// Get the membership bean from spring container
 		MembershipDAO lMembershipDAO = lContext.getBean("membershipDAO", MembershipDAO.class);
 						
 		// Call the business method
 		lMembershipDAO.addMember();
+		lMembershipDAO.goToSleep();
 		
 		// Close the context
 		lContext.close();
