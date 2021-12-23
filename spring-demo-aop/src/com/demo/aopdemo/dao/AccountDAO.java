@@ -7,7 +7,7 @@ import com.demo.aopdemo.Account;
 @Component
 public class AccountDAO {
 	
-	public void addAccount(Account iAccount) {
+	public void addAccount(Account iAccount, boolean iFlag) {
 		System.out.println(getClass() + ": Doing my DB work: Adding an account");
 	}
 }
