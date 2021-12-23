@@ -17,8 +17,13 @@ public class DemoLoggingAspect {
 //	@Before("execution(* add*(..))")
 //	@Before("execution(* com.demo.aopdemo.dao.*.*(..))")
 	@Before("forDaoPackage()")
-	public void beforeAddAccountAdvice() { // method name can be anything
+	public void beforeAddAccountAdvice() { 
 		
 		System.out.println("\n======>>> Executing @Before advice on addAccount()");
+	}
+	
+	@Before("forDaoPackage()")
+	public void performApiAnalytics() { 		
+		System.out.println("\n======>>> Performing Api Analytics");
 	}
 }
