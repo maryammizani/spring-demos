@@ -40,7 +40,7 @@ public class DemoLoggingAspect {
 		} 
 		catch (Exception e) {
 			mLogger.warning(e.getMessage());
-			lResult = "Major Accident! But help is on the way!";
+			throw e;
 		}
 		long lEnd = System.currentTimeMillis();
 		long lDuration = lEnd- lBegin;
