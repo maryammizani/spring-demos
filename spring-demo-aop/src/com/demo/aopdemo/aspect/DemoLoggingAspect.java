@@ -7,6 +7,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import com.demo.aopdemo.Account;
+
 @Aspect
 @Component
 @Order(2)
@@ -24,6 +26,16 @@ public class DemoLoggingAspect {
 		System.out.println("Method: " + lMethodSignature);
 		
 		// Display the method arguments
+		Object[] lArgs = iJoinPoint.getArgs();
+		for(Object lArg: lArgs) {
+			System.out.println(lArg);
+			if(lArg instanceof Account) {
+				// Downcast and print Account specific stuff
+				Account lAccount = (Account)lArg;
+				System.out.println("Account name: " + lAccount.getName());
+				System.out.println("Account code: " + lAccount.getLevel());
+			}
+		}			
 	}
 	
 }
