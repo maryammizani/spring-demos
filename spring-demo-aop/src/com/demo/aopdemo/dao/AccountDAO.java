@@ -13,7 +13,12 @@ public class AccountDAO {
 	private String name;
 	private String serviceCode;
 	
-	public List<Account> findAccounts() {
+	public List<Account> findAccounts(boolean iEnableException) {
+		
+		// For testing purpose: Simulate an exception
+		if(iEnableException) {
+			throw new RuntimeException("Excpetion happened!");
+		}
 		List<Account> lAccounts = new ArrayList<>();
 		
 		// Create Sample Accounts
