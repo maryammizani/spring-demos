@@ -25,8 +25,19 @@ public class DemoLoggingAspect {
 		System.out.println("Method: " + lMethodSignature);
 		System.out.println("\n======>>> Executing @AfterReturning on Method: " + lMethodSignature);
 		System.out.println("\n======>>> result is: " + result);
+		
+		// Post process data and modify it
+		convertAccountNamesToUpperCase(result);
+		System.out.println("\n======>>> result is: " + result);
 	} 		
 	
+	private void convertAccountNamesToUpperCase(List<Account> result) {
+		for(Account lAccount: result) {
+			String lName = lAccount.getName().toUpperCase();
+			lAccount.setName(lName);
+		}			
+	}
+
 //	@Before("execution(public void add*())")
 //	@Before("execution(* add*(..))")
 //	@Before("execution(* com.demo.aopdemo.dao.*.*(..))")
