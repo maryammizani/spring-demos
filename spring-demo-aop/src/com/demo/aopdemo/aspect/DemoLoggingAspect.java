@@ -33,7 +33,15 @@ public class DemoLoggingAspect {
 		mLogger.info("\n======>>> Executing @Around on Method: " + lMethodSignature);
 		
 		long lBegin = System.currentTimeMillis();
-		Object lResult = iProceedingJoinPoint.proceed();
+		Object lResult = null;
+		
+		try {
+			lResult= iProceedingJoinPoint.proceed();
+		} 
+		catch (Exception e) {
+			mLogger.warning(e.getMessage());
+			lResult = "Major Accident! But help is on the way!";
+		}
 		long lEnd = System.currentTimeMillis();
 		long lDuration = lEnd- lBegin;
 		mLogger.info("\n======>>> Duration: " + lDuration/1000.0 + " seconds");

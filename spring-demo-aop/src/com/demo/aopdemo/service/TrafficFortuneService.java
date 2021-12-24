@@ -18,4 +18,12 @@ public class TrafficFortuneService {
 		// Return a fortune
 		return "Heavy Traffic";
 	}
+
+	public String getFortune(boolean iEnableException) {
+		// For testing purpose: Simulate an exception
+		if(iEnableException) {
+			throw new RuntimeException("Major Accident!");
+		}
+		return getFortune();
+	}
 }
