@@ -3,9 +3,11 @@ package com.demo.aopdemo.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -19,7 +21,22 @@ import com.demo.aopdemo.Account;
 @Order(2)
 public class DemoLoggingAspect {
 		
-	// Add a new advice for @AfterThrowing on the findAccounts method
+	// Add a new advice for @Around on the findAccounts method
+	@Around("execution(* com.demo.aopdemo.service.*.getFortune(..))")
+	public Object aroundGetFortune(ProceedingJoinPoint iProceedingJoinPoint) throws Throwable{
+		String lMethodSignature = iProceedingJoinPoint.getSignature().toShortString();
+		System.out.println("Method: " + lMethodSignature);
+		System.out.println("\n======>>> Executing @Around on Method: " + lMethodSignature);
+		
+		long lBegin = System.currentTimeMillis();
+		Object lResult = iProceedingJoinPoint.proceed();
+		long lEnd = System.currentTimeMillis();
+		long lDuration = lEnd- lBegin;
+		System.out.println("\n======>>> Duration: " + lDuration/1000.0 + " seconds");
+		return lResult;
+	} 
+		
+	// Add a new advice for @After on the findAccounts method
 	@After("execution(* com.demo.aopdemo.dao.AccountDAO.findAccounts(..))")
 	public void afterFinallyFindAccountsAdvice(JoinPoint iJoinPoint) {
 		String lMethodSignature = iJoinPoint.getSignature().toShortString();
