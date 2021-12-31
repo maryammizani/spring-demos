@@ -4,11 +4,7 @@
 <html>
 <head>
 	<title>Customer Login Page</title>
-	<style>
-		.failed {
-			color: red;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/demo.css">		
 </head>
 
 
