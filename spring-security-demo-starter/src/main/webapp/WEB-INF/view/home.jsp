@@ -26,6 +26,11 @@
 		<a href="${pageContext.request.contextPath}/leaders">Leadership Meeting</a>
 		(Only for Managers)
 	</p>
+	<!--  Add a link to point to /systems ... only for admins -->
+	<p>
+		<a href="${pageContext.request.contextPath}/systems">Systems Meeting</a>
+		(Only for Admins)
+	</p>
 	<hr>
 	
 	<!--  Add a logout button -->
